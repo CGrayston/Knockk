@@ -7,14 +7,34 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import RealmSwift
 
-class ViewController: UIViewController {
-
+class TableViewController: UITableViewController {
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        grabData()
     }
-
+    
+    func grabData() {
+        let databaseRef = Database.database().reference()
+        databaseRef.child("users").observe(.value, with: {
+            snapshot in
+            print(snapshot)
+            for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                // Convert into a dictionary that is very parsable
+                guard let dictionary = snap.value as? [String : AnyObject] else {
+                    return
+                }
+                let name = dictionary["Name"] as? String
+                let age = dictionary["Age"] as? Int
+                
+                let UserToAdd = User()
+                UserToAdd.name = name
+                UserToAdd.age.value = age
+                UserToAdd.writeToRealm()
+            }
+        })
+    }
 
 }
 

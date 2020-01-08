@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>195222009910-8vje2o2hmj14tp0h3d3qr3dmktt88qeq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.195222009910-8vje2o2hmj14tp0h3d3qr3dmktt88qeq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyApOLshflnTikPAUmJJzla7jftfvquV_JI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>195222009910</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ChrisGrayston.Knockk</string>
+	<key>PROJECT_ID</key>
+	<string>knockk-4acad</string>
+	<key>STORAGE_BUCKET</key>
+	<string>knockk-4acad.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:195222009910:ios:d1d3206abc9bf01c344097</string>
+	<key>DATABASE_URL</key>
+	<string>https://knockk-4acad.firebaseio.com</string>
+</dict>
+</plist>
