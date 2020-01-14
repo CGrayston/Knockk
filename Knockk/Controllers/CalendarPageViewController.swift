@@ -204,8 +204,11 @@ class CalendarPageViewController: UIViewController, UICollectionViewDataSource, 
             cell.isHidden = true
         }
         
-        if currentMonth == Months[calendar.component(.month, from: date) - 1] && year == calendar.component(.year, from: date) && indexPath.row + 1 == day {
-            cell.backgroundColor = UIColor.red
+        if currentMonth == Months[calendar.component(.month, from: date) - 1] && year == calendar.component(.year, from: date) && indexPath.row + 1 - numberOfEmptyBox == day{
+            cell.Circle.isHidden = false
+            cell.backgroundColor = UIColor.orange
+            
+            
         }
         return cell
     }
