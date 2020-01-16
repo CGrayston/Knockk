@@ -7,6 +7,8 @@ target 'Knockk' do
 
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Database'
-	pod 'RealmSwift'
+	# pod 'Realm'
+  	# pod 'RealmSwift'
+	pod 'RealmSwift', '~> 3.20.0'
 
 end
