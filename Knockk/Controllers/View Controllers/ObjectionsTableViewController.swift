@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class AmmoTableViewController: UITableViewController {
+class ObjectionsTableViewController: UITableViewController {
 
     // MARK: - Outlets
     
@@ -27,6 +27,8 @@ class AmmoTableViewController: UITableViewController {
             return realm.objects(Objection.self)
         }
     }
+    
+    // MARK: - Life Cycle Methods
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
@@ -55,12 +57,11 @@ class AmmoTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        // Return number of objections
         return objectsArray.count
     }
 

@@ -9,22 +9,28 @@
 import UIKit
 import Firebase
 import RealmSwift
+import GoogleSignIn
 
 var uiRealm = try! Realm()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Use Firebase library to configure APIs
         FirebaseApp.configure()
-//        let realm = try! Realm()
-//        try! realm.write {
-//          realm.deleteAll()
-//        }
+
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        
         return true
+    }
+    
+    @available(iOS 10.0, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
+      -> Bool {
+      return GIDSignIn.sharedInstance().handle(url)
     }
 
     // MARK: UISceneSession Lifecycle
@@ -43,4 +49,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
 
