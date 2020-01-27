@@ -26,15 +26,14 @@ class HomePageTableViewController: UITableViewController {
 //        }
 //    }
     override func viewDidLoad() {
-        //super.viewDidLoad()
-        print("test")
-        //grabData()
-        //DispatchQueue.main.async {
+        super.viewDidLoad()
+        DispatchQueue.main.async {
 
             self.grabData()
-        //}
+        }
         // Swift
         // Get the default Realm
+        
 
     }
     
