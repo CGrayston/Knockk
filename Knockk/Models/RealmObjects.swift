@@ -53,6 +53,22 @@ class DIPS: Object {
     override static func primaryKey() -> String? {
         return "employeePlusDate"
     }
+    
+    
+    convenience init(employeeUID: String, date: Date) {
+        self.init()
+        self.employeeUID = employeeUID
+        self.date = date
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        let dateString = dateFormatter.string(from: date)
+        
+        self.employeePlusDate = employeeUID + "+" + dateString
+        
+        
+    }
 }
 
 class Objection: Object {
