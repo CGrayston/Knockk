@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class ObjectionsTableViewController: UITableViewController {
-
+    
     // MARK: - Outlets
     
     
@@ -37,10 +37,10 @@ class ObjectionsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         realm = try! Realm()
         
-//        pitch = realm.objects(Pitch.self)
+        //        pitch = realm.objects(Pitch.self)
         
         if pitch.count == 0 {
             // Create only Pitch object
@@ -53,52 +53,9 @@ class ObjectionsTableViewController: UITableViewController {
         
         //setupTableView()
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return number of objections
-        return objectsArray.count
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 69
-    }
-    
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-           
-            let objection = objectsArray[indexPath.row]
-            
-            try! self.realm.write {
-                self.realm.delete(objection)
-            }
-            
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "objectionCell", for: indexPath)
-        
-        let objection = objectsArray[indexPath.row]
-        
-        cell.textLabel?.text = objection.title
-
-        return cell
-    }
-    
-
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toObjectionEditor" {
@@ -140,5 +97,51 @@ class ObjectionsTableViewController: UITableViewController {
         present(alertVC, animated: true, completion: nil)
     }
     
+    
+}
 
+extension ObjectionsTableViewController {
+
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return number of objections
+        return objectsArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 69
+    }
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            let objection = objectsArray[indexPath.row]
+            
+            try! self.realm.write {
+                self.realm.delete(objection)
+            }
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "objectionCell", for: indexPath)
+        
+        let objection = objectsArray[indexPath.row]
+        
+        cell.textLabel?.text = objection.title
+        
+        return cell
+    }
+    
 }

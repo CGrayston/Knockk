@@ -18,16 +18,12 @@ class LoginViewController: UIViewController {
         //self.tabBarController?.delegate = UIApplication.shared.delegate as? UITabBarControllerDelegate
         
         // Set the presenting view controller of the GIDSignIn object
-        // (optionally) sign in silently when possible.
-        
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
         //GIDSignIn.sharedInstance().signIn()
         
         if Auth.auth().currentUser != nil {
-            // User is signed in.
-            print("User is signed in")
-            //GIDSignIn.sharedInstance().signIn()
+            // User is signed in
             DispatchQueue.main.async {
                 let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar")
                 self.view.window?.rootViewController = tabBarVC
@@ -58,18 +54,18 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        // ...
+        // Check for error
         if let error = error {
-            // ...
+            // Print out error and return
             print("Failed to sign in with error: ", error)
             return
         }
         
+        // Get good auth credential
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        // ...
-        
+        // Sign in
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
                 print("Failed to sign in with error: ", error)
@@ -78,9 +74,7 @@ extension LoginViewController: GIDSignInDelegate {
             // User is signed in
             // TODO - Write to Realm
             
-            // TODO * - Segue logged in user to HomePage
-            //let homePageVC = self.storyboard?.instantiateViewController(identifier: "HomePageVC") as? HomePageTableViewController
-            
+            // Segue logged in user to TabBar
             let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar")
             self.view.window?.rootViewController = tabBarVC
             self.view.window?.makeKeyAndVisible()
@@ -89,7 +83,8 @@ extension LoginViewController: GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
-        // ...
+        //Auth.auth().removeStateDidChangeListener(handle)
+        print("sign out")
     }
     
     

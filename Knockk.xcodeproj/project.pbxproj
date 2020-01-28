@@ -31,6 +31,8 @@
 		0AAEBF0623DE719C0043792E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAEBF0523DE719C0043792E /* TabBarViewController.swift */; };
 		0AAEBF0C23DEB5A30043792E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAEBF0B23DEB5A30043792E /* SettingsViewController.swift */; };
 		0AAEBF0E23DEC08A0043792E /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAEBF0D23DEC08A0043792E /* MainNavigationController.swift */; };
+		0AFCE0CE23DFBB4000A65E27 /* RealmServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0CD23DFBB4000A65E27 /* RealmServices.swift */; };
+		0AFCE0D023E0C16B00A65E27 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0CF23E0C16B00A65E27 /* SplashViewController.swift */; };
 		C9E5BEA335662157A662C962 /* Pods_Knockk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA11204BE7963081A5F4DC77 /* Pods_Knockk.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		0AAEBF0523DE719C0043792E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0AAEBF0B23DEB5A30043792E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0AAEBF0D23DEC08A0043792E /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		0AFCE0CD23DFBB4000A65E27 /* RealmServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmServices.swift; sourceTree = "<group>"; };
+		0AFCE0CF23E0C16B00A65E27 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		37248B99EFBDF05A679E9C5B /* Pods-Knockk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knockk.debug.xcconfig"; path = "Target Support Files/Pods-Knockk/Pods-Knockk.debug.xcconfig"; sourceTree = "<group>"; };
 		7AB306C738F6FA0EE588EC77 /* Pods-Knockk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knockk.release.xcconfig"; path = "Target Support Files/Pods-Knockk/Pods-Knockk.release.xcconfig"; sourceTree = "<group>"; };
 		AA11204BE7963081A5F4DC77 /* Pods_Knockk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knockk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +216,7 @@
 				0A01177E238DF76E0058AED6 /* RealmObjects.swift */,
 				0A24F79E23CD3C6D0001AC57 /* Calendar.swift */,
 				0A24F7AF23CFD9DA0001AC57 /* Ammo.swift */,
+				0AFCE0CD23DFBB4000A65E27 /* RealmServices.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 				0A24F7B123CFDA8A0001AC57 /* ObjectionsTableViewController.swift */,
 				0AAEBF0B23DEB5A30043792E /* SettingsViewController.swift */,
 				0AAEBF0D23DEC08A0043792E /* MainNavigationController.swift */,
+				0AFCE0CF23E0C16B00A65E27 /* SplashViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -454,8 +460,10 @@
 				0AAEBF0E23DEC08A0043792E /* MainNavigationController.swift in Sources */,
 				0A24F7AD23CFA2A70001AC57 /* DIPSTableViewCell.swift in Sources */,
 				0A24F7B023CFD9DA0001AC57 /* Ammo.swift in Sources */,
+				0AFCE0CE23DFBB4000A65E27 /* RealmServices.swift in Sources */,
 				0A01174F238DF01D0058AED6 /* SceneDelegate.swift in Sources */,
 				0A24F79F23CD3C6D0001AC57 /* Calendar.swift in Sources */,
+				0AFCE0D023E0C16B00A65E27 /* SplashViewController.swift in Sources */,
 				0A24F7A323CD9ACF0001AC57 /* TimesheetViewController.swift in Sources */,
 				0AAEBF0623DE719C0043792E /* TabBarViewController.swift in Sources */,
 				0A24F7AB23CF9DE30001AC57 /* HomePageTableViewController.swift in Sources */,

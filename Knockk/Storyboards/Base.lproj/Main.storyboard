@@ -26,7 +26,7 @@
                                     <color key="tintColor" red="1" green="0.42727953769999999" blue="0.067155393839999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" backgroundImage="arrow.left.circle.fill" catalog="system"/>
                                     <connections>
-                                        <action selector="previousMonth:" destination="6gG-iy-y3a" eventType="touchUpInside" id="CSf-Gm-IJC"/>
+                                        <action selector="previousDate:" destination="6gG-iy-y3a" eventType="touchUpInside" id="CSf-Gm-IJC"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3j-Fb-aBZ">
@@ -35,7 +35,7 @@
                                     <color key="tintColor" red="1" green="0.42727953769999999" blue="0.067155393839999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" backgroundImage="arrow.right.circle.fill" catalog="system"/>
                                     <connections>
-                                        <action selector="nextMonth:" destination="6gG-iy-y3a" eventType="touchUpInside" id="x2T-bC-MLC"/>
+                                        <action selector="nextDate:" destination="6gG-iy-y3a" eventType="touchUpInside" id="x2T-bC-MLC"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AC Goal: (acs)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIa-kT-hfP">
@@ -88,6 +88,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="96" height="82"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <state key="normal" title="69"/>
                                                             <connections>
                                                                 <action selector="counterButtonTouched:" destination="qWz-u5-SW4" eventType="touchUpInside" id="aoN-04-xHS"/>
                                                             </connections>
@@ -456,12 +457,12 @@
                                 <rect key="frame" x="20" y="128.5" width="374" height="644"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S3X-8R-YaS">
-                                        <rect key="frame" x="18.5" y="0.0" width="337" height="54"/>
+                                        <rect key="frame" x="18.5" y="0.0" width="337" height="228"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tRM-xI-35h">
-                                        <rect key="frame" x="0.0" y="62" width="374" height="544"/>
+                                        <rect key="frame" x="0.0" y="236" width="374" height="370"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -819,8 +820,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="CH5-za-Nt1" kind="relationship" relationship="viewControllers" id="tC4-AI-whm"/>
-                        <segue destination="31c-ZX-u3P" kind="relationship" relationship="viewControllers" id="gcp-mY-Pue"/>
                         <segue destination="fiW-dC-Ndg" kind="relationship" relationship="viewControllers" id="0Cm-Vg-usU"/>
+                        <segue destination="31c-ZX-u3P" kind="relationship" relationship="viewControllers" id="gcp-mY-Pue"/>
                         <segue destination="A21-FB-h0g" kind="relationship" relationship="viewControllers" id="ocg-T2-W9e"/>
                     </connections>
                 </tabBarController>
