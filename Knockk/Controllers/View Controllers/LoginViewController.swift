@@ -22,19 +22,6 @@ class LoginViewController: UIViewController {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         //GIDSignIn.sharedInstance().signIn()
         
-        if Auth.auth().currentUser != nil {
-            // User is signed in
-            DispatchQueue.main.async {
-                let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar")
-                self.view.window?.rootViewController = tabBarVC
-                self.view.window?.makeKeyAndVisible()
-                
-            }
-        } else {
-            // No user is signed in.
-            print("Not signed in")
-        }
-        
         
     }
     

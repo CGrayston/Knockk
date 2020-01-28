@@ -7,24 +7,38 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 class SplashViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-    
+        // Set up views
+        self.view.backgroundColor = .orange
+        
+        if Auth.auth().currentUser != nil {
+            // User is signed in
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+            // Set tabBar as root view controller
+            DispatchQueue.main.async {
+                let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar")
+                self.view.window?.rootViewController = tabBarVC
+                self.view.window?.makeKeyAndVisible()
+            }
+        } else {
+            // No user is signed in.
+            
+            // Set login screen as root view controller
+            DispatchQueue.main.async {
+                let homePageVC = self.storyboard?.instantiateViewController(identifier: "LoginVC") as? LoginViewController
+                
+                self.view.window?.rootViewController = homePageVC
+                self.view.window?.makeKeyAndVisible()
+            }
+        }
+    } 
 }
+
+
