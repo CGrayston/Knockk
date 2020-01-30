@@ -14,7 +14,15 @@ class DIPSTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var counterButton: UIButton!
     
-    var selectedDateDips: DIPS?
+    // MARK: - Properties
+    var indexRow: Int?
+    
+    // MARK: - Data Model
+    var realmServices: RealmServices! {
+        didSet {
+            configure()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +47,7 @@ class DIPSTableViewCell: UITableViewCell {
         guard let counterTitle = counterButton.titleLabel?.text,
             var counterTitleAsInt = Int(counterTitle),
             let nameLabel = nameLabel.text,
-            let selectedDateDIPS = selectedDateDips else {
+            let currentDIPS = realmServices.currentDIPS else {
                 fatalError("Counter was not initilized properly")
         }
         
@@ -80,7 +88,7 @@ class DIPSTableViewCell: UITableViewCell {
         }
         
         // Update DIPS in realm
-        RealmServices.shared.update(selectedDateDIPS, with: dict)
+        realmServices.update(currentDIPS, with: dict)
     }
     
     @IBAction func resetCounterButtonTouched(_ sender: Any) {
@@ -88,7 +96,7 @@ class DIPSTableViewCell: UITableViewCell {
         guard let counterTitle = counterButton.titleLabel?.text,
             var counterTitleAsInt = Int(counterTitle),
             let nameLabel = nameLabel.text,
-            let selectedDateDIPS = selectedDateDips else {
+            let currentDIPS = realmServices.currentDIPS else {
                 fatalError("Counter was not initilized properly")
         }
         
@@ -130,7 +138,7 @@ class DIPSTableViewCell: UITableViewCell {
         }
         
         // Update DIPS in realm
-        RealmServices.shared.update(selectedDateDIPS, with: dict)
+        realmServices.update(currentDIPS, with: dict)
         
     }
     
@@ -139,7 +147,7 @@ class DIPSTableViewCell: UITableViewCell {
         guard let counterTitle = counterButton.titleLabel?.text,
             var counterTitleAsInt = Int(counterTitle),
             let nameLabel = nameLabel.text,
-            let selectedDateDips = selectedDateDips else {
+            let currentDIPS = realmServices.currentDIPS else {
                 fatalError("Counter was not initilized properly")
         }
         
@@ -175,44 +183,48 @@ class DIPSTableViewCell: UITableViewCell {
         }
         
         // Update DIPS in realm
-        RealmServices.shared.update(selectedDateDips, with: dict)
+        realmServices.update(currentDIPS, with: dict)
         
     }
     
     // MARK: - Methods
-    func configure(with DIPSToPass: DIPS, indexRow: Int) {
-        // Set selectedDIPS
-        selectedDateDips = DIPSToPass
+    private func configure() {
+        // Unwrap
+        guard let currentDIPS = realmServices.currentDIPS else {
+            print("Error unwrapping currentDIPS in private func configure")
+            return
+        }
+        
         
         // Set cell title label and button count
         switch indexRow {
         case 0:
             nameLabel.text = "Doors"
-            counterButton.setTitle("\(DIPSToPass.doors)", for: .normal)
+            counterButton.setTitle("\(currentDIPS.doors)", for: .normal)
         case 1:
             nameLabel.text = "Interactions"
-            counterButton.setTitle("\(DIPSToPass.interactions)", for: .normal)
+            counterButton.setTitle("\(currentDIPS.interactions)", for: .normal)
         case 2:
             nameLabel.text = "Homeowners Pitched"
-            counterButton.setTitle("\(DIPSToPass.pitches)", for: .normal)
+            counterButton.setTitle("\(currentDIPS.pitches)", for: .normal)
         case 3:
             nameLabel.text = "Leads Generated"
-            counterButton.setTitle("\(DIPSToPass.leads)", for: .normal)
+            counterButton.setTitle("\(currentDIPS.leads)", for: .normal)
         case 4:
             nameLabel.text = "Come Back Later"
-            counterButton.setTitle("\(DIPSToPass.comeBacks)", for: .normal)
+            counterButton.setTitle("\(currentDIPS.comeBacks)", for: .normal)
         case 5:
             nameLabel.text = "Appointments Set"
-            counterButton.setTitle("\(DIPSToPass.appointments)", for: .normal)
+            counterButton.setTitle("\(currentDIPS.appointments)", for: .normal)
         case 6:
             nameLabel.text = "Lessons Taught"
-            counterButton.setTitle("\(DIPSToPass.lessons)", for: .normal)
+            counterButton.setTitle("\(currentDIPS.lessons)", for: .normal)
         case 7:
             nameLabel.text = "ACs"
-            counterButton.setTitle("\(DIPSToPass.acs)", for: .normal)
+            counterButton.setTitle("\(currentDIPS.acs)", for: .normal)
         case 8:
             nameLabel.text = "WCs"
-            counterButton.setTitle("\(DIPSToPass.wcs)", for: .normal)
+            counterButton.setTitle("\(currentDIPS.wcs)", for: .normal)
         default:
             fatalError("There should only be 9 cases in configure method")
         }

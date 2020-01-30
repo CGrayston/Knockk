@@ -8,13 +8,34 @@
 
 import Foundation
 import RealmSwift
+import Firebase
 
 class RealmServices {
-    
-    private init() {}
-    static let shared = RealmServices()
+    // MARK: - Properties
+    var dipsRealmResults: Results<DIPS>?
+    var selectedDate: Date?
+    var currentDIPS: DIPS?
+    var userUID: String?
     
     var realm = try! Realm()
+
+    // Source of truth
+    //static let shared = RealmServices()
+    
+    // MARK: - Initializers
+    init() {
+        // Set Up Realm and query DIPS realm objects
+        self.dipsRealmResults = realm.objects(DIPS.self)
+        
+        // Since ViewDidLoad - Get today's date
+        self.selectedDate = Date()
+        
+        // Set userUID - Okay since this view is only accesible logged in
+        self.userUID = Auth.auth().currentUser?.uid
+        
+    }
+    
+    
     
     // MARK: - CRUD Functions
     func create<T: Object>(with object: T) {

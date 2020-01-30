@@ -19,36 +19,26 @@ class HomePageTableViewController: UITableViewController {
     @IBOutlet weak var wcGoalLabel: UILabel!
     
     // MARK: - Properties
-    var dipsRealmResults : Results<DIPS>!
     
-    var currentDIPS: DIPS?
-    
-    var selectedDate: Date?
-    
-    var userUID: String {
-        guard let uid = Auth.auth().currentUser?.uid else {
-            fatalError("Non authenticted user shouldn't have gotten to this point")
-        }
-        return uid
-    }
+    // MARK: - Data Model
+    var realmServices: RealmServices!
     
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set Up Realm and query DIPS realm objects
-        let realm = RealmServices.shared.realm
-        dipsRealmResults = realm.objects(DIPS.self)
-        
-        // Since ViewDidLoad - Get today's date
-        selectedDate = Date()
+
         
         // Set up home page
-        setUpHomePage(with: selectedDate!)
+        setUpHomePage()
         
         
         // TODO - Notification whenever there is a change in the UI
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
     
     /*
@@ -80,35 +70,41 @@ class HomePageTableViewController: UITableViewController {
     
     
     
-    func setUpHomePage(with date: Date) {
+    func setUpHomePage() {
         // Filter for DIPS from selected date
-        let filterValue = "\(userUID)+\(dateShortTimeNoneFormatter(fromDate: date))"
-        currentDIPS = dipsRealmResults.filter("employeePlusDate == '\(filterValue)'").first
+        guard let userUID = realmServices.userUID,
+            let selectedDate = realmServices.selectedDate,
+            let dipsRealmResults = realmServices.dipsRealmResults else {
+                print("Error unwrapping values initially set on HomePage")
+                return
+        }
+        let filterValue = "\(userUID)+\(dateShortTimeNoneFormatter(fromDate: selectedDate))"
+        let currentDIPS = dipsRealmResults.filter("employeePlusDate == '\(filterValue)'").first
         
         // Set up date label
-        selectedDateLabel.text = dateFullTimeNoneFormatter(fromDate: date)
+        selectedDateLabel.text = dateFullTimeNoneFormatter(fromDate: selectedDate)
         
     
         // Check if there is a DIPS entry for today
-        if currentDIPS == nil {
+        if currentDIPS != nil {
+            // Set current DIPS
+            realmServices.currentDIPS = currentDIPS
+        } else {
             // No DIPS exist for current date
             // Create DIPS Realm Object
-            let newDIPS = DIPS(employeeUID: userUID, date: date)
+            let newDIPS = DIPS(employeeUID: userUID, date: selectedDate)
             
             // Add DIPS Realm Object
-            RealmServices.shared.create(with: newDIPS)
-            currentDIPS = newDIPS
+            realmServices.create(with: newDIPS)
+            realmServices.currentDIPS = newDIPS
             
             // Alert that new DIPS
-            if let date = selectedDate {
-                let dateString = dateFullTimeNoneFormatter(fromDate: date)
-                let alertVC = UIAlertController(title: "New DIPS", message: "New DIPS were created for date: \(dateString)", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-                alertVC.addAction(cancelAction)
-                present(alertVC, animated: true, completion: nil)
-            } else {
-                fatalError("Bad date input in setUpHomePage")
-            }
+            
+            let dateString = dateFullTimeNoneFormatter(fromDate: selectedDate)
+            let alertVC = UIAlertController(title: "New DIPS", message: "New DIPS were created for date: \(dateString)", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+            alertVC.addAction(cancelAction)
+            present(alertVC, animated: true, completion: nil)
         }
     }
     
@@ -116,17 +112,17 @@ class HomePageTableViewController: UITableViewController {
     // MARK: - Actions
     @IBAction func previousDate(_ sender: Any) {
         // Get date value for one day prior to current selected date
-        guard let unwrappedSelectedDate = selectedDate else {
+        guard let unwrappedSelectedDate = realmServices.selectedDate else {
             print("Error unwrapping selected date")
             return
         }
         let newDate = Date(timeInterval: -86400, since: unwrappedSelectedDate)
         
         // Set selectedDate as declared date value
-        self.selectedDate = newDate
+        realmServices.selectedDate = newDate
         
         // Set up home page with data from selected date
-        setUpHomePage(with: newDate)
+        setUpHomePage()
         
         // Reload table with data from new date
         tableView.reloadData()
@@ -134,7 +130,7 @@ class HomePageTableViewController: UITableViewController {
     
     @IBAction func nextDate(_ sender: Any) {
         // Get date value for the day after the current selected date
-        guard let unwrappedSelectedDate = selectedDate else {
+        guard let unwrappedSelectedDate = realmServices.selectedDate else {
             print("Error unwrapping selected date")
             return
         }
@@ -147,10 +143,10 @@ class HomePageTableViewController: UITableViewController {
         }
         
         // Set selectedDate as declared date value
-        self.selectedDate = newDate
+        realmServices.selectedDate = newDate
         
         // Set up home page with data from selected date
-        setUpHomePage(with: newDate)
+        setUpHomePage()
         
         // Reload table with data from new date
         tableView.reloadData()
@@ -174,12 +170,10 @@ extension HomePageTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "category", for: indexPath) as! DIPSTableViewCell
         
-        guard let currentDIPS = currentDIPS else {
-            print("cureentDIPS not set")
-            return UITableViewCell()
-        }
         // Configure custom cell
-        cell.configure(with: currentDIPS, indexRow: indexPath.row)
+        cell.indexRow = indexPath.row
+        cell.realmServices = realmServices
+        //cell.configure(with: currentDIPS, indexRow: indexPath.row)
         
         
         return cell

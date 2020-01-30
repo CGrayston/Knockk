@@ -15,33 +15,29 @@ class ObjectionsTableViewController: UITableViewController {
     
     
     // MARK: - Properties
-    var realm: Realm!
-    var pitch: Results<Pitch> {
-        get {
-            return realm.objects(Pitch.self)
-        }
-    }
+    var notificationToken: NotificationToken? = nil
+    let realm: Realm
+    var pitch: Results<Pitch>
+    var objections: Results<Objection>
     
-    var objectsArray: Results<Objection> {
-        get {
-            return realm.objects(Objection.self)
-        }
+    // MARK: - Initializers
+    required init?(coder: NSCoder) {
+        // Give realm initial value
+        self.realm = try! Realm()
+        
+        // Give pitch and obejctions initial values
+        self.pitch = realm.objects(Pitch.self)
+        self.objections = realm.objects(Objection.self)
+        super.init(coder: coder)
     }
     
     // MARK: - Life Cycle Methods
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-        super.viewDidLoad()
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        realm = try! Realm()
-        
-        //        pitch = realm.objects(Pitch.self)
-        
+
+        // Create pitch object first time running the app
         if pitch.count == 0 {
             // Create only Pitch object
             let myPitch = Pitch(title: "Pitch")
@@ -51,7 +47,30 @@ class ObjectionsTableViewController: UITableViewController {
             }
         }
         
-        //setupTableView()
+        // Observe Objection Notifications
+        notificationToken = objections.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                // Results are now populated and can be accessed without blocking the UI
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let modifications):
+                // Query results have changed, so apply them to the UITableView
+                tableView.beginUpdates()
+                // Always apply updates in the following order: deletions, insertions, then modifications.
+                // Handling insertions before deletions may result in unexpected behavior.
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                     with: .automatic)
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.endUpdates()
+            case .error(let error):
+                // An error occurred while opening the Realm file on the background worker thread
+                fatalError("\(error)")
+            }
+        }
     }
     
     // MARK: - Navigation
@@ -63,7 +82,7 @@ class ObjectionsTableViewController: UITableViewController {
                 let destinationVC = segue.destination as? PitchObjectionEditorViewController else { return }
             
             // Pass objection to ObjectionEditorTableView
-            let objection = objectsArray[indexPath.row]
+            let objection = objections[indexPath.row]
             destinationVC.objection = objection
         } else if segue.identifier == "toPitchEditor" {
             guard let destinationVC = segue.destination as? PitchObjectionEditorViewController else { return }
@@ -89,7 +108,7 @@ class ObjectionsTableViewController: UITableViewController {
             
             try! self.realm.write {
                 self.realm.add(objection)
-                self.tableView.insertRows(at: [IndexPath(row: self.objectsArray.count - 1, section: 0)], with: .automatic)
+                //self.tableView.insertRows(at: [IndexPath(row: self.objections.count - 1, section: 0)], with: .automatic)
             }
         }
         alertVC.addAction(cancelAction)
@@ -101,7 +120,7 @@ class ObjectionsTableViewController: UITableViewController {
 }
 
 extension ObjectionsTableViewController {
-
+    
     
     // MARK: - Table view data source
     
@@ -111,7 +130,7 @@ extension ObjectionsTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return number of objections
-        return objectsArray.count
+        return objections.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -122,13 +141,13 @@ extension ObjectionsTableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            let objection = objectsArray[indexPath.row]
+            let objection = objections[indexPath.row]
             
             try! self.realm.write {
                 self.realm.delete(objection)
             }
             
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            //tableView.deleteRows(at: [indexPath], with: .automatic)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
@@ -137,7 +156,7 @@ extension ObjectionsTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "objectionCell", for: indexPath)
         
-        let objection = objectsArray[indexPath.row]
+        let objection = objections[indexPath.row]
         
         cell.textLabel?.text = objection.title
         

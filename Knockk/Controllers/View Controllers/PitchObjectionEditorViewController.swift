@@ -42,11 +42,13 @@ class PitchObjectionEditorViewController: UIViewController {
 //        bodyTextView.text = objection.body
         
         if let objection = objection {
+            self.navigationItem.title = "Objection Editor"
             titleTextField.text = objection.title
             bodyTextView.text = objection.body
         }
         
         if let pitch = pitch {
+            self.navigationItem.title = "Pitch Editor"
             titleTextField.text = pitch.title
             bodyTextView.text = pitch.body
         }
@@ -62,29 +64,9 @@ class PitchObjectionEditorViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     // MARK: - Actions
     @IBAction func updateButtonTapped(_ sender: Any) {
-//        guard let objection = objection,
-//            let title = titleTextField.text,
-//            let body = bodyTextView.text else { return }
-//        let realm = try! Realm()
-//        try! realm.write {
-//            objection.title = title
-//            objection.body = body
-//            self.dismiss(animated: true, completion: nil)
-//        }
-        
+
         if let objection = objection,
             let title = titleTextField.text,
             let body = bodyTextView.text {

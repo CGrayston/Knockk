@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import RealmSwift
 
 class LoginViewController: UIViewController {
     
@@ -59,12 +60,48 @@ extension LoginViewController: GIDSignInDelegate {
                 return
             }
             // User is signed in
-            // TODO - Write to Realm
+            
+            // Write to Realm
+            // Get realm object and userUID
+            guard let userUID = Auth.auth().currentUser?.uid else {
+                fatalError("no userUID, will have to redo this unwrapping")
+                //return
+            }
+            
+            // Get the default Realm
+            let realm = try! Realm()
+            
+            // Initilize our custom realm
+            //let realmServices = RealmServices()
+            
+            // Query for user information
+            let user = realm.objects(User.self).filter("uid == '\(userUID)'").first
+            
+            // Check if user exists
+            if user == nil {
+                // No user found - Create user
+                let newUser = User(uid: userUID, dateCreated: Date())
+                try! realm.write {
+                    realm.add(newUser)
+                }
+            } else {
+                // User found
+                
+                // TODO - Don't think anything needs to be done
+                
+            }
+            
+            // Otherwise update user
+            
             
             // Segue logged in user to TabBar
-            let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar")
-            self.view.window?.rootViewController = tabBarVC
-            self.view.window?.makeKeyAndVisible()
+            DispatchQueue.main.async {
+                // TODO look at children see if we can init realm here
+                let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar")
+                self.view.window?.rootViewController = tabBarVC
+                self.view.window?.makeKeyAndVisible()
+                
+            }
         }
     }
     

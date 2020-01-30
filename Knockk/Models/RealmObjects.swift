@@ -10,12 +10,24 @@ import Foundation
 import RealmSwift
 
 class User : Object {
-    @objc dynamic var name : String? = nil
-    var age = RealmOptional<Int>()
+    @objc dynamic var uid = ""
+   
+    @objc dynamic var acGoal = 0
+    @objc dynamic var wcGoal = 0
+    
+    @objc dynamic var dateCreated: Date? = nil
     
     override static func primaryKey() -> String? {
         // Primary key - Eventually should be date
-        return "name"
+        return "uid"
+    }
+    
+    convenience init(uid: String, dateCreated: Date) {
+        self.init()
+        
+        self.uid = uid
+        self.dateCreated = dateCreated
+        
     }
 }
 
@@ -92,20 +104,4 @@ class Pitch: Object {
 //    override class func primaryKey() -> String? {
 //        return "name"
 //    }
-}
-
-extension User {
-    func writeToRealm() {
-        try! uiRealm.write {
-            uiRealm.add(self, update: .modified)
-        }
-    }
-}
-
-extension DIPS {
-    func writeToRealm() {
-        try! uiRealm.write {
-            uiRealm.add(self, update: .modified)
-        }
-    }
 }

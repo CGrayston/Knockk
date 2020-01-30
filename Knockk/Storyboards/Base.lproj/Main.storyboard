@@ -807,10 +807,10 @@
             </objects>
             <point key="canvasLocation" x="-3163.7681159420295" y="-438.61607142857139"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="SHX-07-DWc">
             <objects>
-                <tabBarController storyboardIdentifier="TabBar" automaticallyAdjustsScrollViewInsets="NO" id="l1K-Z0-brz" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVC" automaticallyAdjustsScrollViewInsets="NO" id="l1K-Z0-brz" customClass="TabBarViewController" customModule="Knockk" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="cvT-qC-GYx"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cc6-yq-pKz">
