@@ -15,6 +15,8 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         // Set up views
         self.view.backgroundColor = .orange
         
@@ -23,7 +25,8 @@ class SplashViewController: UIViewController {
 
             // Set tabBar as root view controller
             DispatchQueue.main.async {
-                let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar")
+                let tabBarVC = self.storyboard?.instantiateViewController(identifier: "TabBarVC") as? TabBarViewController
+                //let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar")
                 self.view.window?.rootViewController = tabBarVC
                 self.view.window?.makeKeyAndVisible()
             }

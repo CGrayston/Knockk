@@ -9,15 +9,18 @@
 import UIKit
 
 class TimesheetViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var startStopButton: UIButton!
     @IBOutlet weak var timeKnockingTextField: UITextField!
     
+    // MARK: - Data Model
+    var realmServices: RealmServices!
+    
     // MARK: - Variables
-    var time =  39595
+    var time =  0
     var timer = Timer()
     var seconds = 0
     var minutes = 0
@@ -25,9 +28,10 @@ class TimesheetViewController: UIViewController {
     
     let datePicker = UIDatePicker()
     
+    // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         let toolBar = UIToolbar().ToolbarPiker(mySelect: #selector(TimesheetViewController.doneButtonPressed))
         timeKnockingTextField.inputAccessoryView = toolBar
@@ -40,9 +44,31 @@ class TimesheetViewController: UIViewController {
         displayTime()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // Update selected date
+        guard let currentDIPS = realmServices.currentDIPS,
+            let selectedDate = realmServices.selectedDate else {
+                print("Error unwrapping values initially set on HomePage")
+                return
+        }
+        selectedDateLabel.text = selectedDate.returnDateFullTimeNone()
+        //selectedDateLabel.text = "\(realmServices.currentDIPS?.date)"
+        
+        // Update time knocking
+        time = currentDIPS.timeWorked
+        displayTime()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+
+    }
+    
     // MARK: - Functions
     @objc func addSecond() {
         time += 1
+        
         displayTime()
     }
     
@@ -51,19 +77,7 @@ class TimesheetViewController: UIViewController {
         minutes = (time - (hours * 3600)) / 60
         seconds = time % 60
         
-        // Long display - overrun issue
-//        timeKnockingTextField.text =
-//            (hours == 1 ? "\(hours) hour " : "\(hours) hours ") +
-//            (minutes == 1 ? "\(minutes) minute " : "\(minutes) minutes ") +
-//            (seconds == 1 ? "\(seconds) second" : "\(seconds) seconds")
-        
-        // 00:00:00 display
-//        timeKnockingTextField.text =
-//            (hours < 10 ? "0\(hours):" : "\(hours):") +
-//            (minutes < 10 ? "0\(minutes):" : "\(minutes):") +
-//            (seconds < 10 ? "0\(seconds)" : "\(seconds)")
-        
-        // Shorthand display
+
         timeKnockingTextField.text =
             (hours == 1 ? "\(hours) hr " : "\(hours) hrs ") +
             (minutes == 1 ? "\(minutes) min " : "\(minutes) mins ") +
@@ -71,33 +85,35 @@ class TimesheetViewController: UIViewController {
         
     }
     
-
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
-     // Done button clicked
-     @objc func doneButtonPressed() {
+    // Done button clicked
+    @objc func doneButtonPressed() {
         time = Int(datePicker.countDownDuration)
         displayTime()
         view.endEditing(true)
-
+        
     }
     
     @objc func datePickerValueChanged(sender: UIDatePicker) {
         // TODO - make it so it doesn't look editable
         //timeKnockingTextField.isSelected = false
         //datePicker.countDownDuration = TimeInterval(time)
-//        time = Int(datePicker.countDownDuration)
-//        displayTime()
+        //        time = Int(datePicker.countDownDuration)
+        //        displayTime()
     }
     
     // MARK: - Actions
     @IBAction func previousWorkday(_ sender: Any) {
+        
     }
     
     @IBAction func nextWorkday(_ sender: Any) {
+        
     }
     
     @IBAction func resetButtonTapped(_ sender: Any) {
@@ -126,24 +142,33 @@ class TimesheetViewController: UIViewController {
 }
 
 extension UIToolbar {
-
-func ToolbarPiker(mySelect : Selector) -> UIToolbar {
-
-    let toolBar = UIToolbar()
-
-    toolBar.barStyle = UIBarStyle.default
-    toolBar.isTranslucent = true
-    toolBar.tintColor = UIColor.orange
     
-    toolBar.sizeToFit()
-
-    let doneButton = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.plain, target: self, action: mySelect)
-    let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-
-    toolBar.setItems([ spaceButton, doneButton], animated: false)
-    toolBar.isUserInteractionEnabled = true
-
-    return toolBar
+    func ToolbarPiker(mySelect : Selector) -> UIToolbar {
+        
+        let toolBar = UIToolbar()
+        
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.orange
+        
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.plain, target: self, action: mySelect)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        
+        toolBar.setItems([ spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        return toolBar
+    }
+    
 }
-
+extension Date {
+    func returnDateFullTimeNone() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
+        
+        return dateFormatter.string(from: self)
+    }
 }

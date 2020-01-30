@@ -14,6 +14,9 @@ class CalendarPageViewController: UIViewController, UICollectionViewDataSource, 
     @IBOutlet weak var MonthLabel: UILabel!
     @IBOutlet weak var Calendar: UICollectionView!
     
+    // MARK: - Data Model
+    var realmServices: RealmServices!
+    
     let Months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     let DaysOfMonth = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     var DaysInMonths = [31,29,31,30,31,30,31,31,30,31,30,31]
