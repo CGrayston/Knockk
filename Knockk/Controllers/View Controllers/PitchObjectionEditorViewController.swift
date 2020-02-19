@@ -17,7 +17,7 @@ class PitchObjectionEditorViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
-    
+    @IBOutlet weak var updateButton: UIButton!
     
     // MARK: - Landing Pads
     var objection: Objection? {
@@ -58,6 +58,8 @@ class PitchObjectionEditorViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        updateButton.backgroundColor = Constants.Colors.vivintOrange
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -33,10 +33,15 @@ class ObjectionsTableViewController: UITableViewController {
     
     // MARK: - Life Cycle Methods
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Set up ObjectionsTableVC
+        self.navigationController?.navigationBar.barTintColor = Constants.Colors.vivintOrange
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        tableView.backgroundColor = .white
+        
         // Create pitch object first time running the app
         if pitch.count == 0 {
             // Create only Pitch object
@@ -84,14 +89,26 @@ class ObjectionsTableViewController: UITableViewController {
             // Pass objection to ObjectionEditorTableView
             let objection = objections[indexPath.row]
             destinationVC.objection = objection
+            
+            // Set up back button for destinationVC
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            backItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+            backItem.tintColor = .white
+            navigationItem.backBarButtonItem = backItem
         } else if segue.identifier == "toPitchEditor" {
             guard let destinationVC = segue.destination as? PitchObjectionEditorViewController else { return }
             
             // Pass pitch to ObjectionEditorTableView
             destinationVC.pitch = pitch.first
             
+            // Set up back button for destinationVC
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            backItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+            backItem.tintColor = .white
+            navigationItem.backBarButtonItem = backItem
         }
-        
     }
     
     
@@ -158,6 +175,7 @@ extension ObjectionsTableViewController {
         
         let objection = objections[indexPath.row]
         
+        cell.textLabel?.textColor = .black
         cell.textLabel?.text = objection.title
         
         return cell

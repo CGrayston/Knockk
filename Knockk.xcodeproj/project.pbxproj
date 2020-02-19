@@ -34,6 +34,7 @@
 		0AFCE0D223E0E29A00A65E27 /* DIPSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0D123E0E29900A65E27 /* DIPSController.swift */; };
 		0AFCE0D723E0E3CE00A65E27 /* SelectedDateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0D623E0E3CE00A65E27 /* SelectedDateController.swift */; };
 		0AFCE0D923E21E2900A65E27 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0D823E21E2900A65E27 /* TabBarViewController.swift */; };
+		0AFCE0DB23E2B90900A65E27 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0DA23E2B90900A65E27 /* Constants.swift */; };
 		C9E5BEA335662157A662C962 /* Pods_Knockk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA11204BE7963081A5F4DC77 /* Pods_Knockk.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		0AFCE0D123E0E29900A65E27 /* DIPSController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIPSController.swift; sourceTree = "<group>"; };
 		0AFCE0D623E0E3CE00A65E27 /* SelectedDateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateController.swift; sourceTree = "<group>"; };
 		0AFCE0D823E21E2900A65E27 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		0AFCE0DA23E2B90900A65E27 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		37248B99EFBDF05A679E9C5B /* Pods-Knockk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knockk.debug.xcconfig"; path = "Target Support Files/Pods-Knockk/Pods-Knockk.debug.xcconfig"; sourceTree = "<group>"; };
 		7AB306C738F6FA0EE588EC77 /* Pods-Knockk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knockk.release.xcconfig"; path = "Target Support Files/Pods-Knockk/Pods-Knockk.release.xcconfig"; sourceTree = "<group>"; };
 		AA11204BE7963081A5F4DC77 /* Pods_Knockk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knockk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +191,7 @@
 				0A01175A238DF0200058AED6 /* Info.plist */,
 				0A01177C238DF2300058AED6 /* GoogleService-Info.plist */,
 				0A01174E238DF01D0058AED6 /* SceneDelegate.swift */,
+				0AFCE0DA23E2B90900A65E27 /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				0AAEBF0E23DEC08A0043792E /* MainNavigationController.swift in Sources */,
 				0A24F7AD23CFA2A70001AC57 /* DIPSTableViewCell.swift in Sources */,
 				0A24F7B023CFD9DA0001AC57 /* Ammo.swift in Sources */,
+				0AFCE0DB23E2B90900A65E27 /* Constants.swift in Sources */,
 				0AFCE0D723E0E3CE00A65E27 /* SelectedDateController.swift in Sources */,
 				0AFCE0CE23DFBB4000A65E27 /* RealmServices.swift in Sources */,
 				0A01174F238DF01D0058AED6 /* SceneDelegate.swift in Sources */,

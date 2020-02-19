@@ -13,6 +13,8 @@ class DIPSTableViewCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var counterButton: UIButton!
+    @IBOutlet weak var counterButtonView: UIView!
+    @IBOutlet weak var cellView: UIView!
     
     // MARK: - Properties
     var indexRow: Int?
@@ -27,6 +29,11 @@ class DIPSTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        cellView.layer.cornerRadius = 5
+        cellView.layer.masksToBounds = true
+        
+        counterButtonView.layer.cornerRadius = 10
+        counterButtonView.layer.masksToBounds = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

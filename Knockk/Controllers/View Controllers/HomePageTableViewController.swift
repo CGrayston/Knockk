@@ -17,28 +17,40 @@ class HomePageTableViewController: UITableViewController {
     @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var acGoalLabel: UILabel!
     @IBOutlet weak var wcGoalLabel: UILabel!
+    @IBOutlet weak var headerView: UIView!
+    
     
     // MARK: - Properties
     
     // MARK: - Data Model
     var realmServices: RealmServices!
     
+    // MARK: - Initializers
+    deinit {
+        // TODO - Figure out if we really need this
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        
+    
         // Set up home page
         setUpHomePage()
-        
+        overrideUserInterfaceStyle = .light
         
         // TODO - Notification whenever there is a change in the UI
+        createObservers()
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        // Remove
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        self.navigationController?.navigationBar.isOpaque = true
+        self.navigationController?.navigationBar.barTintColor = Constants.Colors.vivintOrange
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.view.backgroundColor = Constants.Colors.vivintOrange
+        self.headerView.backgroundColor = Constants.Colors.vivintOrange
+        
+
     }
     
     /*
@@ -51,26 +63,14 @@ class HomePageTableViewController: UITableViewController {
      }
      */
     
-    // MARK: - Helper Methods
-    func dateFullTimeNoneFormatter(fromDate date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        dateFormatter.timeStyle = .none
-        
-        return dateFormatter.string(from: date)
+    // MARK: - Notification Methods
+    
+    func createObservers() {
+        // Set up home page observer - Called when selected date is changed
+        NotificationCenter.default.addObserver(self, selector: #selector(HomePageTableViewController.setUpHomePage), name: Constants.Notifications.selectedDateChangedNotification, object: nil)
     }
     
-    func dateShortTimeNoneFormatter(fromDate date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        
-        return dateFormatter.string(from: date)
-    }
-    
-    
-    
-    func setUpHomePage() {
+    @objc func setUpHomePage() {
         // Filter for DIPS from selected date
         guard let userUID = realmServices.userUID,
             let selectedDate = realmServices.selectedDate,
@@ -84,7 +84,6 @@ class HomePageTableViewController: UITableViewController {
         // Set up date label
         selectedDateLabel.text = dateFullTimeNoneFormatter(fromDate: selectedDate)
         
-    
         // Check if there is a DIPS entry for today
         if currentDIPS != nil {
             // Set current DIPS
@@ -102,14 +101,37 @@ class HomePageTableViewController: UITableViewController {
             
             let dateString = dateFullTimeNoneFormatter(fromDate: selectedDate)
             let alertVC = UIAlertController(title: "New DIPS", message: "New DIPS were created for date: \(dateString)", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+            let cancelAction = UIAlertAction(title: "Okay", style: .destructive, handler: nil)
             alertVC.addAction(cancelAction)
             present(alertVC, animated: true, completion: nil)
         }
+        
+        // Reload table with data from new date
+        tableView.reloadData()
+        
+    }
+    
+    // MARK: - Helper Methods
+    
+    func dateFullTimeNoneFormatter(fromDate date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    func dateShortTimeNoneFormatter(fromDate date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        
+        return dateFormatter.string(from: date)
     }
     
     
     // MARK: - Actions
+    
     @IBAction func previousDate(_ sender: Any) {
         // Get date value for one day prior to current selected date
         guard let unwrappedSelectedDate = realmServices.selectedDate else {
@@ -118,14 +140,14 @@ class HomePageTableViewController: UITableViewController {
         }
         let newDate = Date(timeInterval: -86400, since: unwrappedSelectedDate)
         
+        // Make sure timer is stopped
+        if realmServices.isClockedIn {
+            presentAlert(withTitle: "Timer running!", message: "Please pause timer on the Timesheet page before going to previous workday.")
+            return
+        }
+        
         // Set selectedDate as declared date value
         realmServices.selectedDate = newDate
-        
-        // Set up home page with data from selected date
-        setUpHomePage()
-        
-        // Reload table with data from new date
-        tableView.reloadData()
     }
     
     @IBAction func nextDate(_ sender: Any) {
@@ -142,24 +164,29 @@ class HomePageTableViewController: UITableViewController {
             return
         }
         
+        // Make sure timer is stopped
+        if realmServices.isClockedIn {
+            presentAlert(withTitle: "Timer running!", message: "Please pause timer on the Timesheet page before going to next workday.")
+            return
+        }
+        
         // Set selectedDate as declared date value
         realmServices.selectedDate = newDate
-        
-        // Set up home page with data from selected date
-        setUpHomePage()
-        
-        // Reload table with data from new date
-        tableView.reloadData()
     }
     
     
 }
 
-// MARK: - Table view data source
+// MARK: - Table View Data Source
+
 extension HomePageTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.tableView.frame.height / 9
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -180,6 +207,7 @@ extension HomePageTableViewController {
     }
 }
 
+// MARK: - Create Alert Extension
 extension UIViewController {
 
   func presentAlert(withTitle title: String, message : String) {
