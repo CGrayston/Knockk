@@ -15,11 +15,10 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        
         // Set up views
-        self.view.backgroundColor = .orange
-        
+        self.view.backgroundColor = Constants.Colors.vivintOrange
+
+                
         if Auth.auth().currentUser != nil {
             // User is signed in
 

@@ -41,6 +41,10 @@ class CalendarPageViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set up navigation bar
+        self.navigationController?.navigationBar.barTintColor = Constants.Colors.vivintOrange
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
         currentMonth = Months[month]
         MonthLabel.text = "\(currentMonth) \(year)"
         if weekday == 0 {
@@ -56,7 +60,7 @@ class CalendarPageViewController: UIViewController, UICollectionViewDataSource, 
             month = 11
             year -= 1
             direction = -1
-
+            
             if leapYearCounter > 0 {
                 leapYearCounter -= 1
                 DaysInMonths[1] = 29
@@ -82,7 +86,7 @@ class CalendarPageViewController: UIViewController, UICollectionViewDataSource, 
         default:
             month -= 1
             direction = -1
-
+            
             getStartDateDayPosition()
             
             currentMonth = Months[month]
@@ -118,11 +122,11 @@ class CalendarPageViewController: UIViewController, UICollectionViewDataSource, 
             Calendar.reloadData()
         default:
             direction = 1
-
+            
             getStartDateDayPosition()
             
             month += 1
-
+            
             currentMonth = Months[month]
             MonthLabel.text = "\(currentMonth) \(year)"
             Calendar.reloadData()
@@ -167,9 +171,9 @@ class CalendarPageViewController: UIViewController, UICollectionViewDataSource, 
         }
     }
     
-
     
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Return number of days in the month + the number of "empty boxes based on the direction we are going
         switch direction {
@@ -215,5 +219,5 @@ class CalendarPageViewController: UIViewController, UICollectionViewDataSource, 
         }
         return cell
     }
-
+    
 }

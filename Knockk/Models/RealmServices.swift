@@ -13,14 +13,17 @@ import Firebase
 class RealmServices {
     // MARK: - Properties
     var dipsRealmResults: Results<DIPS>?
-    var selectedDate: Date?
     var currentDIPS: DIPS?
-    var userUID: String?
+    var userUID: String!
+    var isClockedIn: Bool!
     
-    var realm = try! Realm()
-
-    // Source of truth
-    //static let shared = RealmServices()
+    var selectedDate: Date? {
+        didSet {
+            NotificationCenter.default.post(name: Constants.Notifications.selectedDateChangedNotification, object: nil)
+        }
+    }
+    
+    private var realm = try! Realm()
     
     // MARK: - Initializers
     init() {
@@ -30,9 +33,23 @@ class RealmServices {
         // Since ViewDidLoad - Get today's date
         self.selectedDate = Date()
         
-        // Set userUID - Okay since this view is only accesible logged in
-        self.userUID = Auth.auth().currentUser?.uid
+        // Alert HomePage, Timesheet and Calendar pages selected date has changed
         
+        
+        // Set userUID - Okay since this view is only accesible logged in
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            print("Error: userUID could not be initilized. Should not have gotten to realmServices init with this being the case")
+            return
+        }
+        
+        self.userUID = userUID
+        
+        self.isClockedIn = false
+    }
+    
+    deinit {
+        // TODO - Figure out if we really need this
+        NotificationCenter.default.removeObserver(self)
     }
     
     
@@ -87,4 +104,7 @@ class RealmServices {
     func stopObservingErrors(in vc: UIViewController) {
         NotificationCenter.default.removeObserver(vc, name: NSNotification.Name("RealmError"), object: nil)
     }
+    
+    // MARK: - Helper Methods
+    
 }

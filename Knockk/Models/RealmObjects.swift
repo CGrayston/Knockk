@@ -37,7 +37,7 @@ class DIPS: Object {
     @objc dynamic var employeePlusDate = ""
     
     // That day of the week. Can only be one per calendar day per user
-    @objc dynamic var date : Date? = nil
+    @objc dynamic var date = Date()
     
     // Values displayed on DIPS page
     @objc dynamic var doors = 0
