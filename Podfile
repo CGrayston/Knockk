@@ -5,8 +5,17 @@ target 'Knockk' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
+	pod 'Firebase/Auth'
+	pod 'GoogleSignIn'
+
+	pod 'Firebase'
+
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Database'
-	pod 'RealmSwift'
+
+	# pod 'Realm'
+  	# pod 'RealmSwift'
+	pod 'RealmSwift', '~> 3.20.0'
+	# pod "Macaw", "0.9.5"
 
 end

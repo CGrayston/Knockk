@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A01174D238DF01D0058AED6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01174C238DF01D0058AED6 /* AppDelegate.swift */; };
 		0A01174F238DF01D0058AED6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01174E238DF01D0058AED6 /* SceneDelegate.swift */; };
-		0A011751238DF01D0058AED6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A011750238DF01D0058AED6 /* ViewController.swift */; };
 		0A011754238DF01D0058AED6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A011752238DF01D0058AED6 /* Main.storyboard */; };
 		0A011756238DF0200058AED6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A011755238DF0200058AED6 /* Assets.xcassets */; };
 		0A011759238DF0200058AED6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A011757238DF0200058AED6 /* LaunchScreen.storyboard */; };
@@ -20,6 +19,24 @@
 		0A24F79B23C967C10001AC57 /* CalendarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F79A23C967C00001AC57 /* CalendarPageViewController.swift */; };
 		0A24F79D23C96B0A0001AC57 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F79C23C96B0A0001AC57 /* DateCollectionViewCell.swift */; };
 		0A24F79F23CD3C6D0001AC57 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F79E23CD3C6D0001AC57 /* Calendar.swift */; };
+		0A24F7A323CD9ACF0001AC57 /* TimesheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F7A023CD977F0001AC57 /* TimesheetViewController.swift */; };
+		0A24F7A623CE65E80001AC57 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A24F7A523CE65E80001AC57 /* Default-568h@2x.png */; };
+		0A24F7AB23CF9DE30001AC57 /* HomePageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F7AA23CF9DE20001AC57 /* HomePageTableViewController.swift */; };
+		0A24F7AD23CFA2A70001AC57 /* DIPSTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F7AC23CFA2A70001AC57 /* DIPSTableViewCell.swift */; };
+		0A24F7B023CFD9DA0001AC57 /* Ammo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F7AF23CFD9DA0001AC57 /* Ammo.swift */; };
+		0A24F7B223CFDA8A0001AC57 /* ObjectionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F7B123CFDA8A0001AC57 /* ObjectionsTableViewController.swift */; };
+		0A24F7B423D012690001AC57 /* PitchObjectionEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F7B323D012690001AC57 /* PitchObjectionEditorViewController.swift */; };
+		0A24F7B623D24AFE0001AC57 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F7B523D24AFE0001AC57 /* LoginViewController.swift */; };
+		0AAEBF0C23DEB5A30043792E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAEBF0B23DEB5A30043792E /* SettingsViewController.swift */; };
+		0AAEBF0E23DEC08A0043792E /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAEBF0D23DEC08A0043792E /* MainNavigationController.swift */; };
+		0AFAB9082401081D006B168C /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFAB9072401081D006B168C /* ChartsViewController.swift */; };
+		0AFAB90A2401A212006B168C /* MacawChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFAB9092401A212006B168C /* MacawChartView.swift */; };
+		0AFCE0CE23DFBB4000A65E27 /* RealmServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0CD23DFBB4000A65E27 /* RealmServices.swift */; };
+		0AFCE0D023E0C16B00A65E27 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0CF23E0C16B00A65E27 /* SplashViewController.swift */; };
+		0AFCE0D223E0E29A00A65E27 /* DIPSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0D123E0E29900A65E27 /* DIPSController.swift */; };
+		0AFCE0D723E0E3CE00A65E27 /* SelectedDateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0D623E0E3CE00A65E27 /* SelectedDateController.swift */; };
+		0AFCE0D923E21E2900A65E27 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0D823E21E2900A65E27 /* TabBarViewController.swift */; };
+		0AFCE0DB23E2B90900A65E27 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0DA23E2B90900A65E27 /* Constants.swift */; };
 		C9E5BEA335662157A662C962 /* Pods_Knockk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA11204BE7963081A5F4DC77 /* Pods_Knockk.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +61,6 @@
 		0A011749238DF01D0058AED6 /* Knockk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Knockk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A01174C238DF01D0058AED6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A01174E238DF01D0058AED6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0A011750238DF01D0058AED6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0A011753238DF01D0058AED6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A011755238DF0200058AED6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A011758238DF0200058AED6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,6 +76,24 @@
 		0A24F79A23C967C00001AC57 /* CalendarPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPageViewController.swift; sourceTree = "<group>"; };
 		0A24F79C23C96B0A0001AC57 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A24F79E23CD3C6D0001AC57 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		0A24F7A023CD977F0001AC57 /* TimesheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesheetViewController.swift; sourceTree = "<group>"; };
+		0A24F7A523CE65E80001AC57 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0A24F7AA23CF9DE20001AC57 /* HomePageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTableViewController.swift; sourceTree = "<group>"; };
+		0A24F7AC23CFA2A70001AC57 /* DIPSTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIPSTableViewCell.swift; sourceTree = "<group>"; };
+		0A24F7AF23CFD9DA0001AC57 /* Ammo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ammo.swift; sourceTree = "<group>"; };
+		0A24F7B123CFDA8A0001AC57 /* ObjectionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ObjectionsTableViewController.swift; path = "Knockk/Controllers/View Controllers/ObjectionsTableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		0A24F7B323D012690001AC57 /* PitchObjectionEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchObjectionEditorViewController.swift; sourceTree = "<group>"; };
+		0A24F7B523D24AFE0001AC57 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0AAEBF0B23DEB5A30043792E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0AAEBF0D23DEC08A0043792E /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		0AFAB9072401081D006B168C /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		0AFAB9092401A212006B168C /* MacawChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacawChartView.swift; sourceTree = "<group>"; };
+		0AFCE0CD23DFBB4000A65E27 /* RealmServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmServices.swift; sourceTree = "<group>"; };
+		0AFCE0CF23E0C16B00A65E27 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		0AFCE0D123E0E29900A65E27 /* DIPSController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIPSController.swift; sourceTree = "<group>"; };
+		0AFCE0D623E0E3CE00A65E27 /* SelectedDateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateController.swift; sourceTree = "<group>"; };
+		0AFCE0D823E21E2900A65E27 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		0AFCE0DA23E2B90900A65E27 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		37248B99EFBDF05A679E9C5B /* Pods-Knockk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knockk.debug.xcconfig"; path = "Target Support Files/Pods-Knockk/Pods-Knockk.debug.xcconfig"; sourceTree = "<group>"; };
 		7AB306C738F6FA0EE588EC77 /* Pods-Knockk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Knockk.release.xcconfig"; path = "Target Support Files/Pods-Knockk/Pods-Knockk.release.xcconfig"; sourceTree = "<group>"; };
 		AA11204BE7963081A5F4DC77 /* Pods_Knockk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Knockk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +128,7 @@
 		0A011740238DF01C0058AED6 = {
 			isa = PBXGroup;
 			children = (
+				0A24F7A523CE65E80001AC57 /* Default-568h@2x.png */,
 				0A01174B238DF01D0058AED6 /* Knockk */,
 				0A011762238DF0210058AED6 /* KnockkTests */,
 				0A01176D238DF0210058AED6 /* KnockkUITests */,
@@ -116,18 +151,11 @@
 		0A01174B238DF01D0058AED6 /* Knockk */ = {
 			isa = PBXGroup;
 			children = (
-				0A01174C238DF01D0058AED6 /* AppDelegate.swift */,
-				0A01174E238DF01D0058AED6 /* SceneDelegate.swift */,
-				0A011750238DF01D0058AED6 /* ViewController.swift */,
-				0A01177E238DF76E0058AED6 /* RealmObjects.swift */,
-				0A011752238DF01D0058AED6 /* Main.storyboard */,
-				0A011755238DF0200058AED6 /* Assets.xcassets */,
-				0A011757238DF0200058AED6 /* LaunchScreen.storyboard */,
-				0A01175A238DF0200058AED6 /* Info.plist */,
-				0A01177C238DF2300058AED6 /* GoogleService-Info.plist */,
-				0A24F79A23C967C00001AC57 /* CalendarPageViewController.swift */,
-				0A24F79C23C96B0A0001AC57 /* DateCollectionViewCell.swift */,
-				0A24F79E23CD3C6D0001AC57 /* Calendar.swift */,
+				0A24F7A923CE67250001AC57 /* Models */,
+				0A24F7A823CE67140001AC57 /* Views */,
+				0A24F7A223CD97970001AC57 /* Controllers */,
+				0A24F7A723CE66F80001AC57 /* Storyboards */,
+				0A24F7A423CE65880001AC57 /* Resources */,
 			);
 			path = Knockk;
 			sourceTree = "<group>";
@@ -148,6 +176,85 @@
 				0A011770238DF0210058AED6 /* Info.plist */,
 			);
 			path = KnockkUITests;
+			sourceTree = "<group>";
+		};
+		0A24F7A223CD97970001AC57 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0A24F7AE23CFB6580001AC57 /* View Controllers */,
+				0AFCE0D323E0E38D00A65E27 /* Model Controllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0A24F7A423CE65880001AC57 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A01174C238DF01D0058AED6 /* AppDelegate.swift */,
+				0A011755238DF0200058AED6 /* Assets.xcassets */,
+				0A01175A238DF0200058AED6 /* Info.plist */,
+				0A01177C238DF2300058AED6 /* GoogleService-Info.plist */,
+				0A01174E238DF01D0058AED6 /* SceneDelegate.swift */,
+				0AFCE0DA23E2B90900A65E27 /* Constants.swift */,
+				0AFAB9092401A212006B168C /* MacawChartView.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0A24F7A723CE66F80001AC57 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0A011752238DF01D0058AED6 /* Main.storyboard */,
+				0A011757238DF0200058AED6 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0A24F7A823CE67140001AC57 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0A24F79C23C96B0A0001AC57 /* DateCollectionViewCell.swift */,
+				0A24F7AC23CFA2A70001AC57 /* DIPSTableViewCell.swift */,
+				0AFCE0D823E21E2900A65E27 /* TabBarViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0A24F7A923CE67250001AC57 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A01177E238DF76E0058AED6 /* RealmObjects.swift */,
+				0A24F79E23CD3C6D0001AC57 /* Calendar.swift */,
+				0A24F7AF23CFD9DA0001AC57 /* Ammo.swift */,
+				0AFCE0CD23DFBB4000A65E27 /* RealmServices.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0A24F7AE23CFB6580001AC57 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0A24F79A23C967C00001AC57 /* CalendarPageViewController.swift */,
+				0A24F7B323D012690001AC57 /* PitchObjectionEditorViewController.swift */,
+				0A24F7A023CD977F0001AC57 /* TimesheetViewController.swift */,
+				0A24F7AA23CF9DE20001AC57 /* HomePageTableViewController.swift */,
+				0A24F7B523D24AFE0001AC57 /* LoginViewController.swift */,
+				0A24F7B123CFDA8A0001AC57 /* ObjectionsTableViewController.swift */,
+				0AAEBF0B23DEB5A30043792E /* SettingsViewController.swift */,
+				0AAEBF0D23DEC08A0043792E /* MainNavigationController.swift */,
+				0AFCE0CF23E0C16B00A65E27 /* SplashViewController.swift */,
+				0AFAB9072401081D006B168C /* ChartsViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		0AFCE0D323E0E38D00A65E27 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0AFCE0D123E0E29900A65E27 /* DIPSController.swift */,
+				0AFCE0D623E0E3CE00A65E27 /* SelectedDateController.swift */,
+			);
+			path = "Model Controllers";
 			sourceTree = "<group>";
 		};
 		2128C0EAFED04EC91167CEF3 /* Frameworks */ = {
@@ -178,7 +285,8 @@
 				0A011745238DF01D0058AED6 /* Sources */,
 				0A011746238DF01D0058AED6 /* Frameworks */,
 				0A011747238DF01D0058AED6 /* Resources */,
-				C805DF0602693C4912F13BE5 /* [CP] Embed Pods Frameworks */,
+				6726B9F3FCF0CB5D81669BEB /* [CP] Embed Pods Frameworks */,
+				0C0321054D86A5D76FB4F028 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -276,6 +384,7 @@
 				0A011759238DF0200058AED6 /* LaunchScreen.storyboard in Resources */,
 				0A01177D238DF2300058AED6 /* GoogleService-Info.plist in Resources */,
 				0A011756238DF0200058AED6 /* Assets.xcassets in Resources */,
+				0A24F7A623CE65E80001AC57 /* Default-568h@2x.png in Resources */,
 				0A011754238DF01D0058AED6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +406,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0C0321054D86A5D76FB4F028 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Knockk/Pods-Knockk-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Knockk/Pods-Knockk-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Knockk/Pods-Knockk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6726B9F3FCF0CB5D81669BEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Knockk/Pods-Knockk-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Knockk/Pods-Knockk-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Knockk/Pods-Knockk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		87371548A6D9C0F0A20DAE77 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,23 +462,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C805DF0602693C4912F13BE5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Knockk/Pods-Knockk-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Knockk/Pods-Knockk-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Knockk/Pods-Knockk-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -343,13 +469,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A24F7B623D24AFE0001AC57 /* LoginViewController.swift in Sources */,
+				0AFAB9082401081D006B168C /* ChartsViewController.swift in Sources */,
 				0A01177F238DF76E0058AED6 /* RealmObjects.swift in Sources */,
-				0A011751238DF01D0058AED6 /* ViewController.swift in Sources */,
 				0A24F79B23C967C10001AC57 /* CalendarPageViewController.swift in Sources */,
 				0A01174D238DF01D0058AED6 /* AppDelegate.swift in Sources */,
+				0AFCE0D923E21E2900A65E27 /* TabBarViewController.swift in Sources */,
 				0A24F79D23C96B0A0001AC57 /* DateCollectionViewCell.swift in Sources */,
+				0A24F7B223CFDA8A0001AC57 /* ObjectionsTableViewController.swift in Sources */,
+				0A24F7B423D012690001AC57 /* PitchObjectionEditorViewController.swift in Sources */,
+				0AAEBF0E23DEC08A0043792E /* MainNavigationController.swift in Sources */,
+				0A24F7AD23CFA2A70001AC57 /* DIPSTableViewCell.swift in Sources */,
+				0A24F7B023CFD9DA0001AC57 /* Ammo.swift in Sources */,
+				0AFCE0DB23E2B90900A65E27 /* Constants.swift in Sources */,
+				0AFCE0D723E0E3CE00A65E27 /* SelectedDateController.swift in Sources */,
+				0AFCE0CE23DFBB4000A65E27 /* RealmServices.swift in Sources */,
 				0A01174F238DF01D0058AED6 /* SceneDelegate.swift in Sources */,
+				0AFCE0D223E0E29A00A65E27 /* DIPSController.swift in Sources */,
 				0A24F79F23CD3C6D0001AC57 /* Calendar.swift in Sources */,
+				0AFCE0D023E0C16B00A65E27 /* SplashViewController.swift in Sources */,
+				0A24F7A323CD9ACF0001AC57 /* TimesheetViewController.swift in Sources */,
+				0AFAB90A2401A212006B168C /* MacawChartView.swift in Sources */,
+				0A24F7AB23CF9DE30001AC57 /* HomePageTableViewController.swift in Sources */,
+				0AAEBF0C23DEB5A30043792E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,7 +667,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2P8CC25627;
-				INFOPLIST_FILE = Knockk/Info.plist;
+				INFOPLIST_FILE = Knockk/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -544,7 +686,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2P8CC25627;
-				INFOPLIST_FILE = Knockk/Info.plist;
+				INFOPLIST_FILE = Knockk/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
