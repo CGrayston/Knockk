@@ -18,6 +18,7 @@ class DIPSTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     var indexRow: Int?
+    var delegate: DIPSTableViewCellDelegate! // Delgate
     
     // MARK: - Data Model
     var realmServices: RealmServices! {
@@ -194,6 +195,11 @@ class DIPSTableViewCell: UITableViewCell {
         
     }
     
+    @IBAction func chartsButtonTapped(_ sender: Any) {
+        // When button is tapped, call delegate function on homePage to segue
+        self.delegate.callSegueFromCell(nameLabel: "Soemthing")
+    }
+    
     // MARK: - Methods
     private func configure() {
         // Unwrap
@@ -236,4 +242,9 @@ class DIPSTableViewCell: UITableViewCell {
             fatalError("There should only be 9 cases in configure method")
         }
     }
+}
+
+// MARK: - Protocol
+protocol DIPSTableViewCellDelegate {
+    func callSegueFromCell(nameLabel: String)
 }

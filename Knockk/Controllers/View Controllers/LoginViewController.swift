@@ -97,7 +97,7 @@ extension LoginViewController: GIDSignInDelegate {
             // Segue logged in user to TabBar
             DispatchQueue.main.async {
                 // TODO look at children see if we can init realm here
-                let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar")
+                let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarVC")
                 self.view.window?.rootViewController = tabBarVC
                 self.view.window?.makeKeyAndVisible()
                 

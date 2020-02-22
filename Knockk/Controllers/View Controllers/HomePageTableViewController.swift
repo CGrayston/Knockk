@@ -11,7 +11,7 @@ import FirebaseDatabase
 import Firebase
 import RealmSwift
 
-class HomePageTableViewController: UITableViewController {
+class HomePageTableViewController: UITableViewController, DIPSTableViewCellDelegate {
     
     // MARK: - Outlets
     @IBOutlet weak var selectedDateLabel: UILabel!
@@ -34,7 +34,7 @@ class HomePageTableViewController: UITableViewController {
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         // Set up home page
         setUpHomePage()
         overrideUserInterfaceStyle = .light
@@ -50,7 +50,7 @@ class HomePageTableViewController: UITableViewController {
         self.view.backgroundColor = Constants.Colors.vivintOrange
         self.headerView.backgroundColor = Constants.Colors.vivintOrange
         
-
+        
     }
     
     /*
@@ -80,6 +80,18 @@ class HomePageTableViewController: UITableViewController {
         }
         let filterValue = "\(userUID)+\(dateShortTimeNoneFormatter(fromDate: selectedDate))"
         let currentDIPS = dipsRealmResults.filter("employeePlusDate == '\(filterValue)'").first
+        
+        // Query for user information matching logged in FireBase user
+        let predicate = NSPredicate(format: "uid = %@", realmServices.userUID)
+        guard let currentUser = realmServices.userRealmResults?.filter(predicate).first else {
+            print("Error: No user profile, this should have returned in the search query")
+            return
+        }
+        // Set currentUser
+        realmServices.currentUser = currentUser
+        
+        // TODO - Set up AC and WC Goal labels
+        setUpGoalsLabels()
         
         // Set up date label
         selectedDateLabel.text = dateFullTimeNoneFormatter(fromDate: selectedDate)
@@ -129,6 +141,15 @@ class HomePageTableViewController: UITableViewController {
         return dateFormatter.string(from: date)
     }
     
+    func setUpGoalsLabels() {
+        guard let currentUser = realmServices.currentUser else {
+            print("Error: No User logged in")
+            return
+        }
+        acGoalLabel.text = "AC Weekly Goal Progress: x/\(currentUser.acGoal)"
+        wcGoalLabel.text = "WC Weekly Goal Progress: x/\(currentUser.wcGoal)"
+    }
+    
     
     // MARK: - Actions
     
@@ -174,12 +195,19 @@ class HomePageTableViewController: UITableViewController {
         realmServices.selectedDate = newDate
     }
     
+    // MARK: - Delegate Function
+    func callSegueFromCell(nameLabel: String) {
+        self.performSegue(withIdentifier: "toChartsViewController", sender: nil)
+    }
+    
     
 }
 
 // MARK: - Table View Data Source
 
 extension HomePageTableViewController {
+
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -195,16 +223,37 @@ extension HomePageTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "category", for: indexPath) as! DIPSTableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "category", for: indexPath) as! DIPSTableViewCell
         
         // Configure custom cell
         cell.indexRow = indexPath.row
         cell.realmServices = realmServices
-        //cell.configure(with: currentDIPS, indexRow: indexPath.row)
+        cell.delegate = self
         
+        
+        //cell.configure(with: currentDIPS, indexRow: indexPath.row)
         
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSettingsVC" {
+            guard let destinationVC = segue.destination as? SettingsViewController else {
+                return
+            }
+            destinationVC.realmServices = self.realmServices
+            
+            // Set up back button for destinationVC
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            backItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+            backItem.tintColor = .white
+            navigationItem.backBarButtonItem = backItem
+        }
+    }
+    
+
+
 }
 
 // MARK: - Create Alert Extension

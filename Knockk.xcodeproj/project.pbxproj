@@ -29,6 +29,8 @@
 		0A24F7B623D24AFE0001AC57 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A24F7B523D24AFE0001AC57 /* LoginViewController.swift */; };
 		0AAEBF0C23DEB5A30043792E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAEBF0B23DEB5A30043792E /* SettingsViewController.swift */; };
 		0AAEBF0E23DEC08A0043792E /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAEBF0D23DEC08A0043792E /* MainNavigationController.swift */; };
+		0AFAB9082401081D006B168C /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFAB9072401081D006B168C /* ChartsViewController.swift */; };
+		0AFAB90A2401A212006B168C /* MacawChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFAB9092401A212006B168C /* MacawChartView.swift */; };
 		0AFCE0CE23DFBB4000A65E27 /* RealmServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0CD23DFBB4000A65E27 /* RealmServices.swift */; };
 		0AFCE0D023E0C16B00A65E27 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0CF23E0C16B00A65E27 /* SplashViewController.swift */; };
 		0AFCE0D223E0E29A00A65E27 /* DIPSController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFCE0D123E0E29900A65E27 /* DIPSController.swift */; };
@@ -84,6 +86,8 @@
 		0A24F7B523D24AFE0001AC57 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0AAEBF0B23DEB5A30043792E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0AAEBF0D23DEC08A0043792E /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		0AFAB9072401081D006B168C /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		0AFAB9092401A212006B168C /* MacawChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacawChartView.swift; sourceTree = "<group>"; };
 		0AFCE0CD23DFBB4000A65E27 /* RealmServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmServices.swift; sourceTree = "<group>"; };
 		0AFCE0CF23E0C16B00A65E27 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		0AFCE0D123E0E29900A65E27 /* DIPSController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIPSController.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				0A01177C238DF2300058AED6 /* GoogleService-Info.plist */,
 				0A01174E238DF01D0058AED6 /* SceneDelegate.swift */,
 				0AFCE0DA23E2B90900A65E27 /* Constants.swift */,
+				0AFAB9092401A212006B168C /* MacawChartView.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 				0AAEBF0B23DEB5A30043792E /* SettingsViewController.swift */,
 				0AAEBF0D23DEC08A0043792E /* MainNavigationController.swift */,
 				0AFCE0CF23E0C16B00A65E27 /* SplashViewController.swift */,
+				0AFAB9072401081D006B168C /* ChartsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -464,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A24F7B623D24AFE0001AC57 /* LoginViewController.swift in Sources */,
+				0AFAB9082401081D006B168C /* ChartsViewController.swift in Sources */,
 				0A01177F238DF76E0058AED6 /* RealmObjects.swift in Sources */,
 				0A24F79B23C967C10001AC57 /* CalendarPageViewController.swift in Sources */,
 				0A01174D238DF01D0058AED6 /* AppDelegate.swift in Sources */,
@@ -482,6 +489,7 @@
 				0A24F79F23CD3C6D0001AC57 /* Calendar.swift in Sources */,
 				0AFCE0D023E0C16B00A65E27 /* SplashViewController.swift in Sources */,
 				0A24F7A323CD9ACF0001AC57 /* TimesheetViewController.swift in Sources */,
+				0AFAB90A2401A212006B168C /* MacawChartView.swift in Sources */,
 				0A24F7AB23CF9DE30001AC57 /* HomePageTableViewController.swift in Sources */,
 				0AAEBF0C23DEB5A30043792E /* SettingsViewController.swift in Sources */,
 			);
