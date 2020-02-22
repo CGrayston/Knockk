@@ -13,7 +13,9 @@ import Firebase
 class RealmServices {
     // MARK: - Properties
     var dipsRealmResults: Results<DIPS>?
+    var userRealmResults: Results<User>?
     var currentDIPS: DIPS?
+    var currentUser: User?
     var userUID: String!
     var isClockedIn: Bool!
     
@@ -29,6 +31,9 @@ class RealmServices {
     init() {
         // Set Up Realm and query DIPS realm objects
         self.dipsRealmResults = realm.objects(DIPS.self)
+        
+        // Query User realm objects
+        self.userRealmResults = realm.objects(User.self)
         
         // Since ViewDidLoad - Get today's date
         self.selectedDate = Date()
