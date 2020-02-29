@@ -197,6 +197,7 @@ class HomePageTableViewController: UITableViewController, DIPSTableViewCellDeleg
     
     // MARK: - Delegate Function
     func callSegueFromCell(nameLabel: String) {
+        // Segue to ChartsViewController
         self.performSegue(withIdentifier: "toChartsViewController", sender: nil)
     }
     
@@ -249,6 +250,18 @@ extension HomePageTableViewController {
             backItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
             backItem.tintColor = .white
             navigationItem.backBarButtonItem = backItem
+        }
+        
+        // Segue is being called when charts button is tapped
+        // Want to pass the data model
+        if segue.identifier == "toChartsViewController" {
+            // Make sure we are segueing to correct VC
+            guard let destinationVC = segue.destination as? ChartsViewController else {
+                return
+            }
+            
+            // Pass data model
+            destinationVC.realmServices = self.realmServices
         }
     }
     
