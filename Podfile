@@ -16,6 +16,6 @@ target 'Knockk' do
 	# pod 'Realm'
   	# pod 'RealmSwift'
 	pod 'RealmSwift', '~> 3.20.0'
-	# pod "Macaw", "0.9.5"
+	pod "Macaw", "0.9.5"
 
 end

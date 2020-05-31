@@ -196,7 +196,6 @@
 				0A01177C238DF2300058AED6 /* GoogleService-Info.plist */,
 				0A01174E238DF01D0058AED6 /* SceneDelegate.swift */,
 				0AFCE0DA23E2B90900A65E27 /* Constants.swift */,
-				0AFAB9092401A212006B168C /* MacawChartView.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -227,6 +226,7 @@
 				0A24F79E23CD3C6D0001AC57 /* Calendar.swift */,
 				0A24F7AF23CFD9DA0001AC57 /* Ammo.swift */,
 				0AFCE0CD23DFBB4000A65E27 /* RealmServices.swift */,
+				0AFAB9092401A212006B168C /* MacawChartView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
